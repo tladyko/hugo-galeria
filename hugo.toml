@@ -1,0 +1,30 @@
+baseURL = "http://localhost:1313/"
+languageCode = "pl"
+defaultContentLanguage = "pl"
+title = "Moja Galeria"
+theme = "hugo-theme-gallery"
+timeout = "120s"
+
+disableKinds = ["taxonomy"]
+enableRobotsTXT = true
+
+[params]
+  defaultTheme = "dark"
+  title = "Moja Galeria"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML"]
+
+[imaging]
+  quality = 75
+  resampleFilter = "CatmullRom"
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = true
+    includeFields = "ImageDescription|Orientation"
+
+[services]
+  [services.rss]
+    limit = 100

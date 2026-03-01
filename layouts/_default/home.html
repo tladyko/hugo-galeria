@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{ partial "title.html" . }}
+  {{ partial "categories.html" }}
+  {{ partial "featured.html" . }}
+
+  {{/* Przyciski nawigacji do galerii */}}
+  {{ $galleries := where .Pages "Params.private" "ne" true }}
+  {{ if $galleries }}
+  <nav class="gallery-nav" aria-label="Galerie">
+    {{ range $galleries }}
+      <a class="gallery-nav-btn" href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+
+  <section class="galleries">
+    {{ range $galleries }}
+      {{ partial "album-card.html" . }}
+    {{ end }}
+  </section>
+{{ end }}

@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hugo-galeria-test1",
+  "compatibility_date": "2025-09-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "public"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "build": {
+    "command": "git submodule update --init --recursive && curl -fsSL https://github.com/gohugoio/hugo/releases/download/v0.145.0/hugo_extended_0.145.0_linux-amd64.tar.gz -o hugo.tar.gz && tar xzf hugo.tar.gz hugo && ./hugo --minify"
+  }
+}

@@ -1,0 +1,70 @@
+{{ range where site.Pages.ByDate.Reverse "Params.featured" "=" true }}
+  {{ $images := .Resources.ByType "image" }}
+  {{ if gt (len $images) 0 }}
+    <section class="hero-slideshow" id="heroSlideshow" aria-label="Pokaz slajdów">
+      {{ range $images }}
+        {{ $img := .Filter (slice images.AutoOrient (images.Process "fit 1920x1080")) }}
+        <div class="hero-slide" style="background-image:url('{{ $img.RelPermalink }}')" role="img" aria-label="{{ .Title }}"></div>
+      {{ end }}
+    </section>
+
+    <style>
+      .hero-slideshow {
+        width: 100%;
+        height: 65vh;
+        min-height: 320px;
+        position: relative;
+        overflow: hidden;
+        background: #111;
+        margin-bottom: 0;
+      }
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center center;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+        will-change: opacity;
+      }
+      .hero-slide.active {
+        opacity: 1;
+      }
+      @media (max-width: 600px) {
+        .hero-slideshow { height: 45vw; min-height: 200px; }
+      }
+    </style>
+
+    <script>
+      (function () {
+        document.addEventListener('DOMContentLoaded', function () {
+          var container = document.getElementById('heroSlideshow');
+          if (!container) return;
+          var slides = Array.from(container.querySelectorAll('.hero-slide'));
+          if (slides.length <= 1) {
+            if (slides.length === 1) slides[0].classList.add('active');
+            return;
+          }
+
+          // Fisher-Yates shuffle — losowa kolejność przy każdym załadowaniu
+          var indices = slides.map(function (_, i) { return i; });
+          for (var i = indices.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = indices[i]; indices[i] = indices[j]; indices[j] = tmp;
+          }
+          var shuffled = indices.map(function (i) { return slides[i]; });
+          shuffled.forEach(function (s) { container.appendChild(s); });
+
+          var current = 0;
+          shuffled[0].classList.add('active');
+
+          setInterval(function () {
+            shuffled[current].classList.remove('active');
+            current = (current + 1) % shuffled.length;
+            shuffled[current].classList.add('active');
+          }, 5000);
+        });
+      })();
+    </script>
+  {{ end }}
+{{ end }}

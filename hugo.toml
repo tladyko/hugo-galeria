@@ -3,7 +3,7 @@ languageCode = "pl"
 defaultContentLanguage = "pl"
 title = "Moja Galeria"
 theme = "hugo-theme-gallery"
-timeout = "120s"
+timeout = "600s"
 
 disableKinds = ["taxonomy"]
 enableRobotsTXT = true

@@ -92,11 +92,12 @@ hugo1/
 | `porto-2025` | Porto 2025 | — | 42 |
 | `route66` | Route 66 2022 | — | 47 |
 | `sequoia-park-2025` | Sequoia Park 2025 | `IMG4Hugo\Sequoia Park 2025\` | 18 |
+| `stambul-2026` | Stambuł 2026 | `fotos\Stambul_2026\` | 73 |
 | `svalbard-2014` | Svalbard 2014 | — | 71 |
 | `szkocja-2012` | Szkocja 2012 | — | 99 |
 | `taormina-2026` | Taormina 2026 | — | 49 |
 | `white-sands-2025` | White Sands 2025 | — | 15 |
-| | **RAZEM** | | **756** |
+| | **RAZEM** | | **829** |
 
 ---
 
@@ -194,6 +195,10 @@ git push
 | `a71d860` | Usunięto galerię Marakesh 2025; slideshow featured: +41 zdjęć, -JAS_1516 |
 | `331a4b0` | Zwiększ timeout Hugo do 600s — fix build Cloudflare (gallery.html timeout) |
 | `455077a` | Dodano galerie: Taormina 2026 |
+| `2074fef` | baseURL na workers.dev, Grand Canyon, aktualizacja PROJEKT.md, dodano CLAUDE.md |
+| `b9b70ca` | Przywrócenie końców linii LF |
+| `901f993` | Dodano galerie: Stambuł 2026 |
+| *(ten)* | Dodano .gitattributes (normalizacja końców linii) |
 
 ---
 
@@ -206,3 +211,5 @@ git push
 - Build trwa długo przy wielu zdjęciach — w `hugo.toml` ustawiono `timeout = "600s"` (fix z 6.03.2026)
 - Pierwsze buildy po dodaniu dużej liczby zdjęć trwają długo (generowanie miniatur); kolejne są szybkie dzięki cache
 - Cloudflare buduje automatycznie po każdym `git push` do brancha `master`
+- `.gitattributes` (`* text=auto`) wymusza LF w repo — chroni przed fałszywymi zmianami CRLF/LF przy commitach z Windows i Linuksa
+- Skrypty publikacji leżą piętro wyżej: `C:\!DATA\Tomek\fotos\new-gallery.ps1` (cały workflow + git push) i `optimize-photos.ps1` (ImageMagick, 2400 px, JPEG 85%, bez EXIF/GPS); opis w `fotos\INSTRUKCJA.md`

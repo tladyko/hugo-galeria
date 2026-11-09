@@ -1,0 +1,9 @@
+# Normalizacja końców linii: w repo zawsze LF, niezależnie od systemu
+* text=auto
+
+# Pliki binarne – bez żadnej konwersji
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary

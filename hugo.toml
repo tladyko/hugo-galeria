@@ -1,4 +1,4 @@
-baseURL = "https://hugo-galeria.pages.dev/"
+baseURL = "https://hugo-galeria-test1.tladyko.workers.dev/"
 languageCode = "pl"
 defaultContentLanguage = "pl"
 title = "Moja Galeria"
